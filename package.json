@@ -1,0 +1,19 @@
+{
+  "name": "jiffycar",
+  "version": "1.0.0",
+  "description": "car rental company",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valteria/jiffycar.io.git"
+  },
+  "author": "Hieu Dinh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valteria/jiffycar.io/issues"
+  },
+  "homepage": "https://github.com/Valteria/jiffycar.io#readme"
+}
