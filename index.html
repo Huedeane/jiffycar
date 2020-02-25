@@ -31,9 +31,13 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
         <!--CSS file-->
         <link rel="stylesheet" href="css/style.css">
 
+        
+        
     </head>
     <body>
         <main>
+
+ 
             <!--Navbar-->
             <nav class="navbar bg-light navbar-light">
                 <div class="container-fluid">
@@ -43,42 +47,58 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                 </div>
             </nav>
 
-            <!--Table Container-->
-            <div class="content">
+            <!--Content-->
+            <div class="container">
                 
-                <h2>Table</h2>
+                <div class="row m-5">
+                    <div class="col-lg-6">
+                        <h2>Table</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <!--Activate Car Modal Button-->
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">+</button>
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!--Table-->
+                        <table class="table table-bordered table-hover">
+                        <tr class="bg-muted">
+                            <th data-colname="id" data-order="desc">#</th>
+                            <th data-colname="make" data-order="desc">MAKE</th>
+                            <th data-colname="model" data-order="desc">MODEL</th>
+                            <th data-colname="year" data-order="desc">YEAR</th>
+                            <th data-colname="seats" data-order="desc">SEATS</th>
+                            <th data-colname="price" data-order="desc">PRICE/DAY</th>
+                            <th data-colname="available" data-order="desc">AVAILABLE</th>
+                        </tr>
 
-                <!--Table-->
-                <table class="table table-bordered table-hover">
-                    <tr class="bg-muted">
-                        <th data-colname="id" data-order="desc">#</th>
-                        <th data-colname="make" data-order="desc">MAKE</th>
-                        <th data-colname="model" data-order="desc">MODEL</th>
-                        <th data-colname="year" data-order="desc">YEAR</th>
-                        <th data-colname="seats" data-order="desc">SEATS</th>
-                        <th data-colname="price" data-order="desc">PRICE/DAY</th>
-                        <th data-colname="available" data-order="desc">AVAILABLE</th>
-                    </tr>
+                        <tbody id="rent-table">
+                        </tbody>
 
-                    <tbody id="rent-table">
-                    </tbody>
-
-                </table>               
+                    </table>  
+                    </div>
+                </div>             
             </div> 
 
-            <!--Activate Car Modal Button-->
-            <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">+</button>
-            <!--Car Modal-->
-            <div class="modal" tabindex="-1" role="dialog" id="mymodal">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+            
+            <!-- Car Modal -->
+            <div class="modal" id="mymodal">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
+                        <!-- Modal Form -->
                         <form>
+    
+                            <!-- Modal Header -->
                             <div class="modal-header">
                                 <h5 class="modal-title">Create Car</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
+    
+                            <!-- Modal Body -->
                             <div class="modal-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -119,28 +139,32 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                                     </select>
                                 </div>
                             </div>
+    
+                            <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
+            
         </main>
-    </body>
 
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
 
     <!--jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <!--Popper.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
     <!--JS file-->
     <script src="/js/app.js"></script>
+
 </html>
