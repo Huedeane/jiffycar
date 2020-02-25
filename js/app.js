@@ -1,4 +1,4 @@
-var myArray = [
+var dataArray = [
     {'id':'0001',
      'make':'BMW',
      'model':'C600 SPORT',
@@ -128,37 +128,60 @@ var myArray = [
 ];
 
 
-buildTable(myArray)
+buildTable(dataArray)
 
 
-
- $('th').on('click', function(){
-     var column = $(this).data('colname')
-     var order = $(this).data('order')
-     var text = $(this).html()
-     text = text.substring(0, text.length - 1);
-     
-     console.log(text);
-     
-     
-     if (order == 'desc'){
-        myArray = myArray.sort((a, b) => a[column] > b[column] ? 1 : -1)
+//Sort Table Header
+$('th').on('click', function(){
+    //Get data value
+    var column = $(this).data('colname')
+    var order = $(this).data('order')
+    var text = $(this).html()
+    text = text.substring(0, text.length);
+    
+    //Sort based on order
+    if (order == 'desc'){
+        //Sort Array
+        dataArray = dataArray.sort((a, b) => a[column] > b[column] ? 1 : -1)
+        //Change to opposite order
         $(this).data("order","asc");
-        text += '&#8593'
-     }else{
-        myArray = myArray.sort((a, b) => a[column] < b[column] ? 1 : -1)
+        //Set new Text
+        text = text.split(' ')[0] + ' &#8593';
+    }
+    else{
+        dataArray = dataArray.sort((a, b) => a[column] < b[column] ? 1 : -1)
         $(this).data("order","desc");
-        text += '&#8595'
-     }
+        text = text.split(' ')[0] +  ' &#8595';
+    }
 
+    //Set HTML text
     $(this).html(text)
-    buildTable(myArray)
-    })
+
+    //Rebuild Table
+    buildTable(dataArray)
+
+    console.log(text);
+
+    //Create Custom Event
+    $('th').trigger('customEvent', column);
+})
+
+//Restrict Header Sort to 1
+$('th').on('customEvent', function(event, param){
+    var column = $(this).data('colname')
+    
+    //Check if this equal param
+    if(column != param){
+        var text = $(this).html()
+        text = text.split(' ')[0];
+
+        //Set HTML text
+        $(this).html(text)
+    }
+})
 
 
-   
- 
-//{'id':'0001', 'make':'BMW', 'model':'C600 SPORT', 'year': '2013', 'seats': , 'price': },
+//Build the Table
 function buildTable(data){
     //Get Table
     var table = document.getElementById('rent-table')
@@ -170,6 +193,7 @@ function buildTable(data){
     for (var i = 0; i < data.length; i++){
 
         //Make id
+        var colrow = `row-${i+1}`
         var colid = `id-${i+1}`
         var colmake = `make-${i+1}`
         var colmodel = `model-${i+1}`
@@ -190,14 +214,14 @@ function buildTable(data){
             available = "No";
         }
 
-        var row = `<tr class ="${tablecolor}">
-                        <td>${data[i].id}</td>
-                        <td>${data[i].make}</td>
-                        <td>${data[i].model}</td>
-                        <td>${data[i].year}</td>
-                        <td>${data[i].seats} seated</td>
-                        <td>$${data[i].price}/day</td>
-                        <td>${available}</td>
+        var row = `<tr class ="${tablecolor} ${colrow}">
+                        <td id ="${colid}">${data[i].id}</td>
+                        <td id ="${colmake}">${data[i].make}</td>
+                        <td id ="${colmodel}">${data[i].model}</td>
+                        <td id ="${colyear}">${data[i].year}</td>
+                        <td id ="${colseats}">${data[i].seats} seated</td>
+                        <td id ="${colprice}">$${data[i].price}/day</td>
+                        <td id ="${colavailable}">${available}</td>
                    </tr>`
 
         table.innerHTML += row

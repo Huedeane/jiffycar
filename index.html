@@ -8,13 +8,10 @@ Solutions UI design should match company style guides:
 • Headers text color: #758692
 The solution should have:
 1. Stage 1: List of cars
-a. Users should be able to see list of cars in the fleet
 b. Users should be able to add new cars
 c. Users should be able to edit existing entries in the list
 d. Users should be able change car state: Available or Rented
 e. Users should be able to clearly see if car is rented or not
-f. Car should have these properties: Unique ID, Car Maker, Car Model, Manufacturing
-Year, Number of seats, Price per day, Rented Date From, Rented Date To
 2. Stage 2: Rent history
 a. Each car should have rent history.
 b. Rent history should include: Date from, Date to, Number of days rented, Miles Driven,
@@ -41,24 +38,26 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
             <nav class="navbar bg-light navbar-light">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="#">WebSiteName</a>
+                        <a class="navbar-brand" href="#">Jiffy Car</a>
                     </div>
                 </div>
             </nav>
 
             <!--Table Container-->
-            <div class="container-fluid">
+            <div class="content">
                 
+                <h2>Table</h2>
+
                 <!--Table-->
                 <table class="table table-bordered table-hover">
                     <tr class="bg-muted">
-                        <th data-colname="id" data-order="desc"># &#8595</th>
-                        <th data-colname="make" data-order="desc">MAKE &#8595</th>
-                        <th data-colname="model" data-order="desc">MODEL &#8595</th>
-                        <th data-colname="year" data-order="desc">YEAR &#8595</th>
-                        <th data-colname="seats" data-order="desc">SEATS &#8595</th>
+                        <th data-colname="id" data-order="desc">#</th>
+                        <th data-colname="make" data-order="desc">MAKE</th>
+                        <th data-colname="model" data-order="desc">MODEL</th>
+                        <th data-colname="year" data-order="desc">YEAR</th>
+                        <th data-colname="seats" data-order="desc">SEATS</th>
                         <th data-colname="price" data-order="desc">PRICE/DAY</th>
-                        <th data-colname="available" data-order="desc">IS AVAILABLE</th>
+                        <th data-colname="available" data-order="desc">AVAILABLE</th>
                     </tr>
 
                     <tbody id="rent-table">
