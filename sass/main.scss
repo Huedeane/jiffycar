@@ -1,0 +1,132 @@
+//Variable
+$color-title: #CE0E2D;
+$color-text-standard: #2D2A26;
+$color-text-header: #758692;
+
+body {
+    font-family: 'Open Sans', ;
+    background-color: white;
+}
+
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px;
+    border-radius: .5rem;
+    padding: 2rem;
+
+    &__title {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: underline;
+    }
+}
+
+
+
+
+
+.u-info {
+    display: block;
+}
+
+.card {
+
+    background-color: lightgrey;
+    height: 35rem;
+    position: relative;
+    border: .1rem solid lightgrey;
+
+
+    &__header {
+        background-image: url("/img/acura-nsx-2016.jpg");
+        background-position: center;
+        background-size: cover;
+        height: 50%;
+
+        &--available {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5rem;
+            width: 5rem;
+            background-color: rgba(0, 128, 0, 0.50);
+            clip-path: polygon(0 0, 100% 0, 0 100%);  
+        }
+
+        &--modify {
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+        }
+
+    }
+
+    &__block {
+
+        text-align: left;
+        padding: 1rem 0 .5rem 1rem;
+
+        &--available {
+            color: green;
+            font-weight: bold;
+
+        }
+
+        &--info {
+            display: block;
+
+
+        }
+
+        &--service {
+
+
+        }
+
+        &--rent {
+
+
+        }
+
+        &:first-child(){
+            background-color: honeydew;
+        }
+
+    }
+
+    &:hover {
+        box-shadow: 5px 5px 2px;
+    }
+
+    
+
+}
+
+.block-white {
+    background-color: white;
+}
+
+.btn {
+
+    
+    &--modify{
+        background-color: Transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+        padding: 1rem;
+        height: 3rem;
+        width: 3rem;
+        background-image: url("/img/gear.svg");
+        background-size: cover;
+        opacity: .70;
+    }
+    
+}

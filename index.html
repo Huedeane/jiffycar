@@ -1,0 +1,377 @@
+<!--
+Solutions UI design should match company style guides:
+• Font: Open Sans
+• Title color: #CE0E2D
+• Standard text color: #2D2A26
+• Headers text color: #758692
+The solution should have:
+1. Stage 1: List of cars
+a. Users should be able to see list of cars in the fleet
+b. Users should be able to add new cars
+c. Users should be able to edit existing entries in the list
+d. Users should be able change car state: Available or Rented
+e. Users should be able to clearly see if car is rented or not
+f. Car should have these properties: Unique ID, Car Maker, Car Model, Manufacturing
+Year, Number of seats, Price per day, Rented Date From, Rented Date To
+2. Stage 2: Rent history
+a. Each car should have rent history.
+b. Rent history should include: Date from, Date to, Number of days rented, Miles Driven,
+Price per day, Total Price (days rented * price per day), Total Price with VAT (Total Price
++ 21%)
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jiffy Car | Rental Car</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
+    <body>
+        <main>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">Features</a>
+                    <a class="nav-item nav-link" href="#">Pricing</a>
+                    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+                </div>
+            </div>
+        </nav>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
+            +
+        </button>
+
+
+        <table class="table table-striped">
+            <tr class="bg-muted">
+                <th class="text-capitalize" data-colname="name" data-order="desc">Ifasd &#8595</th>
+                <th data-colname="age" data-order="desc">Age &#8595</th>
+                <th data-colname="birthdate" data-order="desc">Birthday &#8595</th>
+            </tr>
+            <tbody id="myTable1">
+            </tbody>
+        </table>
+
+
+
+        <div class="modal" tabindex="-1" role="dialog" id="mymodal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                    <h5 class="modal-title">Create Car</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputMake">Make:</label>
+                            <input type="make" class="form-control" id="inputMake">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputModel">Model:</label>
+                            <input type="model" class="form-control" id="inputModel">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputYear">Manufacturing Year:</label>
+                            <input type="year" class="form-control" id="inputYear">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="mr-sm-2" for="inputYears">Number of Seats:</label>
+                            <select class="custom-select mr-sm-2" id="inputSeats">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPrice">Price per Day:</label>
+                            <input type="price" class="form-control" id="inputPrice">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="mr-sm-2" for="inputAvailable">Is Available:</label>
+                            <select class="custom-select mr-sm-2" id="inputAvailable">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" type="text/javascript"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>
+<!--
+    <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Number</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Make</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Seat</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Available</th>
+                        <th scope="col">Rent Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">154784</th>
+                        <td>1999</td>
+                        <td>Honda</td>
+                        <td>Civic 2D Coupe Ex</td>
+                        <td>4</td>
+                        <td>$10,000</td>
+                        <td>Yes</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">154784</th>
+                        <td>1999</td>
+                        <td>Honda</td>
+                        <td>Civic 2D Coupe Ex</td>
+                        <td>4</td>
+                        <td>$10,000</td>
+                        <td>Yes</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">154784</th>
+                        <td>1999</td>
+                        <td>Honda</td>
+                        <td>Civic 2D Coupe Ex</td>
+                        <td>4</td>
+                        <td>$10,000</td>
+                        <td>Yes</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card__header">
+                    <div class="card__header--available"></div>
+                    <button class="card__header--modify btn btn--modify"></button>
+                </div>
+                <div class="card__block block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+    
+                <div class="card__block">
+                    <span class="card__block--info">
+                        ACURA ILX 2018
+                    </span>
+                    <span class="card__block--info">
+                        4 - Seated
+                    </span>
+                    <div class="div">
+    
+                    </div>
+                </div>
+    
+                <div class="card__block  block-white">
+                    <p class="card__block--available">
+                        Available
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    -->
