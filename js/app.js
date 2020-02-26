@@ -130,6 +130,18 @@ var dataArray = [
 
 buildTable(dataArray)
 
+//On form submit, hide modal
+$('#car-form').submit(function(e) {
+    //Prevent reloading
+    e.preventDefault();
+
+    //Submit Form
+    onFormSubmit();
+
+    //Hide Modal
+    $('#mymodal').modal('hide');
+    return false;
+});
 
 var selectedRow = null;
 
@@ -137,9 +149,28 @@ function onFormSubmit(){
     var formData = readFormData();
     if(selectedRow == null){
         insertRecord(formData);
-        resetForm();
+        
     }
+    else{
+        updateRecord(formData)
+    }
+    resetForm();
     
+}
+
+function availableChange(text){
+    switch(text){
+        case true:
+            return "Yes";
+        case false:
+            return "No";
+        case "Yes":
+            return true;
+        case "No":
+            return false;
+        default:
+            return null;
+    }
 }
 
 function readFormData(){
@@ -150,7 +181,7 @@ function readFormData(){
     formData["year"] = document.getElementById("inputYear").value;
     formData["seats"] = document.getElementById("inputSeats").value;
     formData["price"] = document.getElementById("inputPrice").value;
-    formData["available"] = document.getElementById("inputAvailable").value;
+    formData["available"] = availableChange(document.getElementById("inputAvailable").value);
     return formData;
 }
 
@@ -171,61 +202,63 @@ function insertRecord(data){
 }
 
 function resetForm(type) {
+    //Reset Form to no Value
     document.getElementById("inputMake").value = "";
     document.getElementById("inputModel").value = "";
     document.getElementById("inputYear").value = "";
     document.getElementById("inputSeats").value = "";
     document.getElementById("inputPrice").value = "";
     document.getElementById("inputAvailable").value = "";
+    //Clear Selected Row
+    selectedRow = null;
 }
 
+//Change modal title depending on create or modify
 function changeModalTitle(text){
-    console.log(text);
     document.getElementById("form-title").innerHTML = text;
 }
 
 function editRecord(index){
+    //Set selected row
+    selectedRow = index;
+
+    //Store selected row into array
     var carData = {};
     carData['make'] = dataArray[index].make
-    carData['make'] = dataArray[index].model
-    carData['make'] = dataArray[index].year
-    carData['make'] = dataArray[index].seats
-    carData['make'] = dataArray[index].price
-     ;
-
-    var available;
-        if(dataArray[index].available == true)
-        carData['available'] = "Yes";
-        else
-        carData['available'] = "No";
+    carData['model'] = dataArray[index].model
+    carData['year'] = dataArray[index].year
+    carData['seats'] = dataArray[index].seats
+    carData['price'] = dataArray[index].price
+    carData['available'] = availableChange(dataArray[index].available)
         
-
-    document.getElementById("inputMake").value = make;
-    document.getElementById("inputModel").value = model;
-    document.getElementById("inputYear").value = year;
-    document.getElementById("inputSeats").value = seats;
-    document.getElementById("inputPrice").value = price;
-    document.getElementById("inputAvailable").value = available;
+    //Array value to Form
+    document.getElementById("inputMake").value = carData.make;
+    document.getElementById("inputModel").value = carData.model;
+    document.getElementById("inputYear").value = carData.year;
+    document.getElementById("inputSeats").value = carData.seats;
+    document.getElementById("inputPrice").value = carData.price;
+    document.getElementById("inputAvailable").value = carData.available;
 }
 
-function updateRecord(index){
-    var make = dataArray[index].make
-    var model = dataArray[index].model
-    var year = dataArray[index].year
-    var seats = dataArray[index].seats
-    var price = dataArray[index].price
-    var available;
+function updateRecord(formData){
+    //Update data array with form data
+    dataArray[selectedRow].make = formData.make
+    dataArray[selectedRow].model = formData.model;
+    dataArray[selectedRow].year = formData.year;
+    dataArray[selectedRow].seats = formData.seats;
+    dataArray[selectedRow].price = formData.price;
+    dataArray[selectedRow].available = formData.available;
 
-    var available;
-        if(dataArray[index].available == true)
-            available = "Yes";
-        else
-            available = "No";
+    //Rebuild Table
+    buildTable(dataArray);
+
 }
 
+//Delete Record
 function deleteRecord(index) {
     dataArray.splice(index,1);
-    
+
+    //Rebuild Array after record deleted
     buildTable(dataArray);
 }
 
@@ -330,8 +363,16 @@ function buildTable(data){
                         <td id ="${colprice}">$${data[i].price}/day</td>
                         <td id ="${colavailable}">${available}</td>
                         <td id ="${colmodify}">
-                            <button class="btn btn-primary" onclick="editRecord(${i}); changeModalTitle('Edit Car');" data-toggle="modal" data-target="#mymodal">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteRecord(${i}) ">Delete</button>
+                            <button class="btn btn-primary" onclick="editRecord(${i}); changeModalTitle('Edit Car');" data-toggle="modal" data-target="#mymodal" data-toggle="tooltip" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-warning" data-toggle="tooltip" title="Rent History">
+                                <i class="fas fa-history" style=""></i>
+                            </button>
+                            <button class="btn btn-danger " onclick="deleteRecord(${i}) data-toggle="tooltip" title="Delete"">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            
                         </td>
                    </tr>`
 
