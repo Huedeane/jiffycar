@@ -7,7 +7,7 @@ var dataArray = [
     'price': 43,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'2',
@@ -18,7 +18,7 @@ var dataArray = [
     'price': 28,
     'available':false,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'3',
@@ -29,7 +29,7 @@ var dataArray = [
     'price': 59,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'4',
@@ -40,7 +40,7 @@ var dataArray = [
     'price': 54,
     'available':false,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'5',
@@ -51,7 +51,7 @@ var dataArray = [
     'price': 32,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'6',
@@ -62,7 +62,7 @@ var dataArray = [
     'price': 31,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'7',
@@ -73,7 +73,7 @@ var dataArray = [
     'price': 21,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'8',
@@ -84,7 +84,7 @@ var dataArray = [
     'price': 36,
     'available':false,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     },
 
     {'id':'9',
@@ -95,7 +95,7 @@ var dataArray = [
     'price': 21,
     'available':true,
     'history': [
-        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+        {'from': '2019-02-02','to': '2020-02-04','miles': '22'}]
     }
 ];
 
@@ -111,7 +111,7 @@ $('#car-form').submit(function(e) {
     onFormSubmit();
 
     //Hide Modal
-    $('#myModal').modal('hide');
+    $('#carModal').modal('hide');
     return false;
 });
 
@@ -120,8 +120,7 @@ var selectedRow = null;
 function onFormSubmit(){
     var formData = readFormData();
     if(selectedRow == null){
-        insertRecord(formData);
-        
+        insertRecord(formData);    
     }
     else{
         updateRecord(formData)
@@ -154,15 +153,14 @@ function readFormData(){
     formData["seats"] = document.getElementById("inputSeats").value;
     formData["price"] = document.getElementById("inputPrice").value;
     formData["available"] = availableChange(document.getElementById("inputAvailable").value);
-    
-    var history = [{'from': '','to': '','miles': ''}]
-    history.from = document.getElementById("inputFrom").value;
-    history.to = document.getElementById("inputTo").value; 
-    history.miles = document.getElementById("inputMiles").value; 
 
-    console.log(document.getElementById("inputFrom").value);
-    
+    var history = [{'from': '','to': '','miles': ''}];
+    history[0].from = document.getElementById("inputFrom").value;
+    history[0].to = document.getElementById("inputTo").value; 
+    history[0].miles = document.getElementById("inputMiles").value;
+
     formData["history"] = history;
+
     return formData;
 }
 
@@ -217,8 +215,7 @@ function editRecord(index){
     carData['available'] = availableChange(dataArray[index].available)
     carData['history'] = dataArray[index].history
     
-
-    console.log(carData.history[0].from);
+    
 
     //Array value to Form
     document.getElementById("inputMake").value = carData.make;
@@ -234,8 +231,6 @@ function editRecord(index){
 
 function viewRent(index){
 
-
-
     var historyData = {};
     historyData['from'] = dataArray[index].history[0].from;
     historyData['to'] = dataArray[index].history[0].to; 
@@ -244,7 +239,7 @@ function viewRent(index){
     var date1 = new Date(historyData.from);
     var date2 = new Date(historyData.to);
 
-    var timeDif = date1.getTime() - date2.getTime();
+    var timeDif = date2.getTime() - date1.getTime();
 
 
     var elasped = timeDif/(1000*3600*24);
@@ -257,8 +252,8 @@ function viewRent(index){
     document.getElementById("readMiles").value = historyData.miles;
     document.getElementById("readRent").value = elasped;
     document.getElementById("readPrice").value = dataArray[index].price;
-    document.getElementById("readTotal").value = '$'+total;
-    document.getElementById("readTotalVat").value = '$'+totalVat;
+    document.getElementById("readTotal").value = '$'+total.toFixed(2);
+    document.getElementById("readTotalVat").value = '$'+totalVat.toFixed(2);
 }
 
 function updateRecord(formData){
@@ -385,7 +380,7 @@ function buildTable(data){
         }
  
         var row = `<tr class ="${colrow}">
-                        <td id ="${colid}">${data[i].id}</td>
+                        <td id ="${colid}">${(data[i].id).toString().padStart(2,'0')}</td>
                         <td id ="${colmake}">${data[i].make}</td>
                         <td id ="${colmodel}">${data[i].model}</td>
                         <td id ="${colyear}">${data[i].year}</td>

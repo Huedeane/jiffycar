@@ -2,22 +2,25 @@ body {
   font-family: "Open Sans";
   background-color: white; }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #758692;
+  line-height: 1.8rem; }
+
+table {
+  color: #2D2A26 !important; }
+
 th {
   background-color: lightgray; }
   th:hover {
     background-color: white; }
 
-.trow {
-  position: relative; }
-  .trow--danger {
-    position: absolute;
-    border-left: 3px solid red !important; }
-  .trow--success {
-    position: absolute;
-    border-left: 3px solid green !important; }
-
 .u-text-title {
-  color: #CE0E2D; }
+  color: #CE0E2D !important;
+  font-weight: bold; }
 
 .u-text-standard {
   color: #2D2A26; }

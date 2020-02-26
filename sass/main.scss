@@ -11,6 +11,19 @@ body {
     background-color: white;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: $color-text-header;
+    line-height: 1.8rem;
+}
+
+table {
+    color: $color-text-standard !important;
+}
+
 th{
 
     background-color: $color-table-header-bg-color;
@@ -20,23 +33,9 @@ th{
     }
 }
 
-.trow{
-
-    position: relative;
-    &--danger{
-        position: absolute;
-        border-left: 3px solid red !important;
-    }
-    &--success{
-        position: absolute;
-        border-left: 3px solid green !important;
-    }
-}
-
-
-
 .u-text-title{
-    color: $color-title;
+    color: $color-title !important;
+    font-weight: bold;
 }
 
 .u-text-standard{
