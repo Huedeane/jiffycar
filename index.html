@@ -8,10 +8,8 @@ Solutions UI design should match company style guides:
 • Headers text color: #758692
 The solution should have:
 1. Stage 1: List of cars
-b. Users should be able to add new cars
 c. Users should be able to edit existing entries in the list
 d. Users should be able change car state: Available or Rented
-e. Users should be able to clearly see if car is rented or not
 2. Stage 2: Rent history
 a. Each car should have rent history.
 b. Rent history should include: Date from, Date to, Number of days rented, Miles Driven,
@@ -48,7 +46,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
             </nav>
 
             <!--Content-->
-            <div class="container">
+            <div class="container container-fluid">
                 
                 <div class="row m-5">
                     <div class="col-lg-6">
@@ -56,7 +54,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                     </div>
                     <div class="col-lg-6">
                         <!--Activate Car Modal Button-->
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">+</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal" onclick="changeModalTitle('Create Car');">+</button>
                     </div>
                     
                 </div>
@@ -74,6 +72,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                             <th data-colname="seats" data-order="desc">SEATS</th>
                             <th data-colname="price" data-order="desc">PRICE/DAY</th>
                             <th data-colname="available" data-order="desc">AVAILABLE</th>
+                            <th data-colname="modify" data-order="desc"></th>
                         </tr>
 
                         <tbody id="rent-table">
@@ -83,18 +82,17 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                     </div>
                 </div>             
             </div> 
-
             
             <!-- Car Modal -->
             <div class="modal" id="mymodal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <!-- Modal Form -->
-                        <form>
+                        <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
     
                             <!-- Modal Header -->
                             <div class="modal-header">
-                                <h5 class="modal-title">Create Car</h5>
+                                <h5 class="modal-title" id="form-title">Create Car</h5>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
     
@@ -139,7 +137,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                                     </select>
                                 </div>
                             </div>
-    
+
                             <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save changes</button>

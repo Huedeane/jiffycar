@@ -1,87 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="container">
-  <h2>Modal Example</h2>
-  <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open modal
-  </button>
-
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PHP CRUD</title>
         
-        <!-- Modal body -->
-        <div class="modal-body">
-          Modal body..
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-
-    <!--Content-->
-    <div class="container">
-                    
-        <div class="row m-5">
-            <div class="col-lg-6">
-                <h2>Table</h2>
-            </div>
-            <div class="col-lg-6">
-                <!--Activate Car Modal Button-->
-                <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal">+</button>
-            </div>
-            
-        </div>
-        
-        
+    </head>
+    <body>
         <div class="row">
-            <div class="col-lg-12">
-                <!--Table-->
-                <table class="table table-bordered table-hover">
-                <tr class="bg-muted">
-                    <th data-colname="id" data-order="desc">#</th>
-                    <th data-colname="make" data-order="desc">MAKE</th>
-                    <th data-colname="model" data-order="desc">MODEL</th>
-                    <th data-colname="year" data-order="desc">YEAR</th>
-                    <th data-colname="seats" data-order="desc">SEATS</th>
-                    <th data-colname="price" data-order="desc">PRICE/DAY</th>
-                    <th data-colname="available" data-order="desc">AVAILABLE</th>
-                </tr>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label>Name<label>
+                    <input type="text" name="name" value="Enter your name">
+                </div>
 
-                <tbody id="rent-table">
-                </tbody>
+                <div class="form-group">
+                    <label for="">Location</label>
+                    <input type="text" name="location" value="Enter your location">
+                </div>
+                
+                <div class="form-group"></div>
+                    <button type="submit" name="save">Save</button>
+                </div>
+            </form>
+        </div>
+    </body>
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-            </table>  
-            </div>
-        </div>             
-    </div> 
-</div>
-</body>
-<!--JS file-->
-<script src="/js/app.js"></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--Popper.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </html>
