@@ -138,7 +138,7 @@ function onFormSubmit(){
     if(selectedRow == null){
         insertRecord(formData);
         resetForm();
-    }else
+    }
     
 }
 
