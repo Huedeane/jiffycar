@@ -354,14 +354,14 @@ function buildTable(data){
             available = "No";
         }
 
-        var row = `<tr class ="${tablecolor} ${colrow}">
+        var row = `<tr class ="${colrow}">
                         <td id ="${colid}">${data[i].id}</td>
                         <td id ="${colmake}">${data[i].make}</td>
                         <td id ="${colmodel}">${data[i].model}</td>
                         <td id ="${colyear}">${data[i].year}</td>
                         <td id ="${colseats}">${data[i].seats} seated</td>
                         <td id ="${colprice}">$${data[i].price}/day</td>
-                        <td id ="${colavailable}">${available}</td>
+                        <td class ="${tablecolor}" id ="${colavailable}">${available}</td>
                         <td id ="${colmodify}">
                             <button class="btn btn-primary" onclick="editRecord(${i}); changeModalTitle('Edit Car');" data-toggle="modal" data-target="#mymodal" data-toggle="tooltip" title="Edit">
                                 <i class="fas fa-edit"></i>
@@ -369,7 +369,7 @@ function buildTable(data){
                             <button class="btn btn-warning" data-toggle="tooltip" title="Rent History">
                                 <i class="fas fa-history" style=""></i>
                             </button>
-                            <button class="btn btn-danger " onclick="deleteRecord(${i}) data-toggle="tooltip" title="Delete"">
+                            <button class="btn btn-danger " onclick="deleteRecord(${i})" data-toggle="tooltip" title="Delete">
                                 <i class="fas fa-times"></i>
                             </button>
                             

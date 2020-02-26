@@ -7,6 +7,24 @@ th {
   th:hover {
     background-color: white; }
 
+.trow {
+  position: relative;
+  width: 50px; }
+  .trow--danger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-left: 3px solid red !important; }
+  .trow--success {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-left: 3px solid green !important; }
+
 .u-text-title {
   color: #CE0E2D; }
 

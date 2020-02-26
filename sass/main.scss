@@ -20,6 +20,29 @@ th{
     }
 }
 
+.trow{
+
+    position: relative;
+    width: 50px;
+
+    &--danger{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-left: 3px solid red !important;
+    }
+    &--success{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-left: 3px solid green !important;
+    }
+}
+
 
 
 .u-text-title{
