@@ -54,7 +54,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                     </div>
                     <div class="col-lg-6">
                         <!--Activate Car Modal Button-->
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#mymodal" onclick="changeModalTitle('Create Car');" data-toggle="tooltip" title="Add">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#carModal" onclick="changeModalTitle('Create Car');" data-toggle="tooltip" title="Add">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
@@ -88,7 +88,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
             
             
             <!-- Car Modal -->
-            <div class="modal" id="mymodal">
+            <div class="modal" id="carModal">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <!-- Modal Form -->
@@ -97,7 +97,7 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                             <!-- Modal Header -->
                             <div class="modal-header">
                                 <h5 class="modal-title" id="form-title">Create Car</h5>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal" onclick="resetForm();">&times;</button>
                             </div>
     
                             <!-- Modal Body -->
@@ -105,20 +105,20 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputMake">Make:</label>
-                                        <input type="make" class="form-control" id="inputMake">
+                                        <input type="text" class="form-control" id="inputMake">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputModel">Model:</label>
-                                        <input type="model" class="form-control" id="inputModel">
+                                        <input type="text" class="form-control" id="inputModel">
                                     </div>
                                 </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputYear">Manufacturing Year:</label>
-                                    <input type="year" class="form-control" id="inputYear">
+                                    <input type="number" class="form-control" id="inputYear">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="mr-sm-2" for="inputYears">Number of Seats:</label>
+                                    <label for="inputYears">Number of Seats:</label>
                                     <select class="custom-select mr-sm-2" id="inputSeats">
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -131,17 +131,39 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputPrice">Price per Day:</label>
-                                    <input type="price" class="form-control" id="inputPrice">
+                                    <input type="number" class="form-control" id="inputPrice">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="mr-sm-2" for="inputAvailable">Is Available:</label>
+                                    <label for="inputAvailable">Is Available:</label>
                                     <select class="custom-select mr-sm-2" id="inputAvailable">
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
                                 </div>
+
+                                
+                            </div>
+                            <div class="form-row">
+                                <h5>Rent History</h5>
+                                
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group col-md-5">
+                                    <label for="inputFrom">Date From</label>
+                                    <input type="date" max="2021-01-01" 
+                                        min="2019-01-01" class="form-control" id="inputFrom" value=""> 
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="inputTo">Date To</label>
+                                    <input type="date" max="2021-01-01" 
+                                        min="2019-01-01" class="form-control" id="inputTo" value="">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputMiles">Miles:</label>
+                                    <input type="number" class="form-control" id="inputMiles">
+                                </div>
+                            </div>
                             <!-- Modal Footer -->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -151,6 +173,69 @@ Price per day, Total Price (days rented * price per day), Total Price with VAT (
                     </div>
                 </div>
             </div>
+        </div>
+
+        
+
+
+        <!-- Rent Modal -->
+        <div class="modal fade" id="rentModal">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <form autocomplete="off" id="car-form"></form>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Rental History</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputYear">Date From:</label>
+                                <input type="date" class="form-control" id="readFrom" readonly>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputYear">Date To:</label>
+                                <input type="date" class="form-control" id="readTo" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputYear">Miles Driven:</label>
+                                <input class="form-control" id="readMiles" readonly>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputYear">Days Rented:</label>
+                                <input class="form-control" id="readRent" readonly>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputYear">Price Per Day:</label>
+                                <input class="form-control" id="readPrice" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputYear">Total Price:</label>
+                                <input class="form-control" id="readTotal" readonly>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputYear">Total Price + Vat:</label>
+                                <input class="form-control" id="readTotalVat"  readonly>
+                            </div>
+                        </div>
+                    
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+            
             
         </main>
 

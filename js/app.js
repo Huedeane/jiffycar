@@ -1,130 +1,102 @@
 var dataArray = [
     {'id':'1',
-     'make':'BMW',
-     'model':'C600 SPORT',
-     'year': '2013',
-     'seats': 5,
-     'price': 43,
-     'available':true},
+    'make':'BMW',
+    'model':'C600 SPORT',
+    'year': '2013',
+    'seats': 5,
+    'price': 43,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'2',
-     'make':'BMW',
-     'model':'650I GRAN COUPE',
-     'year': '2015',
-     'seats': 3,
-     'price': 28,
-     'available':false},
+    'make':'BMW',
+    'model':'650I GRAN COUPE',
+    'year': '2015',
+    'seats': 3,
+    'price': 28,
+    'available':false,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'3',
-     'make':'KAWASAKI', 'model':'KLR250',
-     'year': '2003',
-     'seats': 2,
-     'price': 59,
-     'available':true},
+    'make':'KAWASAKI',
+    'model':'KLR250',
+    'year': '2003',
+    'seats': 2,
+    'price': 59,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'4',
-     'make':'VICTORY',
-     'model':'VEGAS JACKPOT',
-     'year': '2010',
-     'seats': 6,
-     'price': 54,
-     'available':false},
+    'make':'VICTORY',
+    'model':'VEGAS JACKPOT',
+    'year': '2010',
+    'seats': 6,
+    'price': 54,
+    'available':false,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'5',
-     'make':'POLARIS',
-     'model':'600 SWITCHBACK ADVENTURE',
-     'year': '2014',
-     'seats': 4,
-     'price': 32,
-     'available':true},
+    'make':'POLARIS',
+    'model':'600 SWITCHBACK ADVENTURE',
+    'year': '2014',
+    'seats': 4,
+    'price': 32,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'6',
-     'make':'AMERICAN IRONHORSE',
-     'model':'CLASSIC CHOP',
-     'year': '2008',
-     'seats': 6,
-     'price': 31,
-     'available':true},
+    'make':'AMERICAN IRONHORSE',
+    'model':'CLASSIC CHOP',
+    'year': '2008',
+    'seats': 6,
+    'price': 31,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'7',
-     'make':'YAMAHA',
-     'model':'TW200',
-     'year': '2011',
-     'seats': 5,
-     'price': 21,
-     'available':true},
+    'make':'YAMAHA',
+    'model':'TW200',
+    'year': '2011',
+    'seats': 5,
+    'price': 21,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'8',
-     'make':'INTERNATIONAL',
-     'model':'4800',
-     'year': '2002',
-     'seats': 2,
-     'price': 36,
-     'available':false},
+    'make':'INTERNATIONAL',
+    'model':'4800',
+    'year': '2002',
+    'seats': 2,
+    'price': 36,
+    'available':false,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    },
 
     {'id':'9',
-     'make':'DODGE',
-     'model':'CHARGER',
-     'year': '2007',
-     'seats': 6,
-     'price': 21,
-     'available':true},
-
-    {'id':'10',
-     'make':'KAWASAKI',
-     'model':'EX650 NINJA 650R',
-     'year': '2011',
-     'seats': 5,
-     'price': 47,
-     'available':true},
-
-    {'id':'11',
-     'make':'SKI-DOO',
-     'model':'EXPEDITION SPORT 600 ACE',
-     'year': '2011',
-     'seats': 4,
-     'price': 20,
-     'available':true},
-    {'id':'12',
-     'make':'AUDI',
-     'model':'TT QUATTRO',
-     'year': '2015',
-     'seats': 2,
-     'price': 41,
-     'available':false},
-
-    {'id':'13',
-     'make':'INTERNATIONAL',
-     'model':'8600 TRANSTAR',
-     'year': '2009',
-     'seats': 4,
-     'price': 45, 
-    'available':true},
-
-    {'id':'14',
-     'make':'YAMAHA',
-     'model':'RX10R APEX',
-     'year': '2013',
-     'seats': 5,
-     'price': 38,
-     'available':true},
-
-    {'id':'15',
-     'make':'AMERICAN LAFRANCE',
-     'model':'CONDOR',
-     'year': '2007',
-
-     'seats': 2,
-     'price': 31,
-     'available':true},
-
-    {'id':'16', 
-    'make':'YAMAHA', 
-    'model':'YFA-1 BREEZE125', 
-    'year': '2003', 
-    'seats': 5, 
-    'price': 40, 
-    'available':false},
+    'make':'DODGE',
+    'model':'CHARGER',
+    'year': '2007',
+    'seats': 6,
+    'price': 21,
+    'available':true,
+    'history': [
+        {'from': '2020-02-02','to': '2019-02-04','miles': '22'}]
+    }
 ];
 
 
@@ -139,7 +111,7 @@ $('#car-form').submit(function(e) {
     onFormSubmit();
 
     //Hide Modal
-    $('#mymodal').modal('hide');
+    $('#myModal').modal('hide');
     return false;
 });
 
@@ -182,6 +154,15 @@ function readFormData(){
     formData["seats"] = document.getElementById("inputSeats").value;
     formData["price"] = document.getElementById("inputPrice").value;
     formData["available"] = availableChange(document.getElementById("inputAvailable").value);
+    
+    var history = [{'from': '','to': '','miles': ''}]
+    history.from = document.getElementById("inputFrom").value;
+    history.to = document.getElementById("inputTo").value; 
+    history.miles = document.getElementById("inputMiles").value; 
+
+    console.log(document.getElementById("inputFrom").value);
+    
+    formData["history"] = history;
     return formData;
 }
 
@@ -195,13 +176,14 @@ function insertRecord(data){
     'year': data.year, 
     'seats': data.seats, 
     'price': data.price, 
-    'available':data.available
+    'available': data.available,
+    'history': data.history
     })
 
     buildTable(dataArray);
 }
 
-function resetForm(type) {
+function resetForm() {
     //Reset Form to no Value
     document.getElementById("inputMake").value = "";
     document.getElementById("inputModel").value = "";
@@ -209,6 +191,9 @@ function resetForm(type) {
     document.getElementById("inputSeats").value = "";
     document.getElementById("inputPrice").value = "";
     document.getElementById("inputAvailable").value = "";
+    document.getElementById("inputFrom").value = "";
+    document.getElementById("inputTo").value = "";
+    document.getElementById("inputMiles").value = "";
     //Clear Selected Row
     selectedRow = null;
 }
@@ -230,7 +215,11 @@ function editRecord(index){
     carData['seats'] = dataArray[index].seats
     carData['price'] = dataArray[index].price
     carData['available'] = availableChange(dataArray[index].available)
-        
+    carData['history'] = dataArray[index].history
+    
+
+    console.log(carData.history[0].from);
+
     //Array value to Form
     document.getElementById("inputMake").value = carData.make;
     document.getElementById("inputModel").value = carData.model;
@@ -238,6 +227,38 @@ function editRecord(index){
     document.getElementById("inputSeats").value = carData.seats;
     document.getElementById("inputPrice").value = carData.price;
     document.getElementById("inputAvailable").value = carData.available;
+    document.getElementById("inputFrom").value = carData.history[0].from;
+    document.getElementById("inputTo").value = carData.history[0].to;  
+    document.getElementById("inputMiles").value = carData.history[0].miles;
+}
+
+function viewRent(index){
+
+
+
+    var historyData = {};
+    historyData['from'] = dataArray[index].history[0].from;
+    historyData['to'] = dataArray[index].history[0].to; 
+    historyData['miles'] = dataArray[index].history[0].miles;
+
+    var date1 = new Date(historyData.from);
+    var date2 = new Date(historyData.to);
+
+    var timeDif = date1.getTime() - date2.getTime();
+
+
+    var elasped = timeDif/(1000*3600*24);
+    var total = elasped * dataArray[index].price;
+    var totalVat = total + (total * .21);
+
+    //Array value to Form
+    document.getElementById("readFrom").value = historyData.from;
+    document.getElementById("readTo").value = historyData.to;
+    document.getElementById("readMiles").value = historyData.miles;
+    document.getElementById("readRent").value = elasped;
+    document.getElementById("readPrice").value = dataArray[index].price;
+    document.getElementById("readTotal").value = '$'+total;
+    document.getElementById("readTotalVat").value = '$'+totalVat;
 }
 
 function updateRecord(formData){
@@ -248,6 +269,7 @@ function updateRecord(formData){
     dataArray[selectedRow].seats = formData.seats;
     dataArray[selectedRow].price = formData.price;
     dataArray[selectedRow].available = formData.available;
+    dataArray[selectedRow].history = formData.history;
 
     //Rebuild Table
     buildTable(dataArray);
@@ -319,6 +341,14 @@ $('th').on('customEvent', function(event, param){
     }
 })
 
+function caculate(index){
+
+    dataArray.forEach(element => {
+        var daysRented
+    });
+
+}
+
 
 //Build the Table
 function buildTable(data){
@@ -353,7 +383,7 @@ function buildTable(data){
             tablecolor = "table-danger";
             available = "No";
         }
-
+ 
         var row = `<tr class ="${colrow}">
                         <td id ="${colid}">${data[i].id}</td>
                         <td id ="${colmake}">${data[i].make}</td>
@@ -363,12 +393,14 @@ function buildTable(data){
                         <td id ="${colprice}">$${data[i].price}/day</td>
                         <td class ="${tablecolor}" id ="${colavailable}">${available}</td>
                         <td id ="${colmodify}">
-                            <button class="btn btn-primary" onclick="editRecord(${i}); changeModalTitle('Edit Car');" data-toggle="modal" data-target="#mymodal" data-toggle="tooltip" title="Edit">
+                            <button class="btn btn-primary" onclick="editRecord(${i}); changeModalTitle('Edit Car');" data-toggle="modal" data-target="#carModal" data-toggle="tooltip" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-warning" data-toggle="tooltip" title="Rent History">
-                                <i class="fas fa-history" style=""></i>
+
+                            <button class="btn btn-warning" onclick="viewRent(${i});"data-toggle="modal" data-target="#rentModal" data-toggle="tooltip" title="Rent History">
+                                <i class="fas fa-history"></i>
                             </button>
+
                             <button class="btn btn-danger " onclick="deleteRecord(${i})" data-toggle="tooltip" title="Delete">
                                 <i class="fas fa-times"></i>
                             </button>
